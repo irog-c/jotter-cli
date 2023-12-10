@@ -1,4 +1,4 @@
-#include <iostream>
+#include <fmt/core.h>
 
 #include <jotter.hpp>
 
@@ -6,7 +6,6 @@ namespace jotter
 {
     void record_note(std::string_view note)
     {
-        std::cout << "Recording note.\n";
-        std::cout << note << '\n';
+        fmt::println("Recording note: {}", note);
     }
 }
