@@ -4,5 +4,11 @@
 
 namespace jotter
 {
-    void record_note(std::string_view);
+    struct config
+    {
+        int testval;
+    };
+
+    void record_note(std::string_view) noexcept;
+    config get_config();
 }

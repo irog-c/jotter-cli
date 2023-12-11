@@ -11,6 +11,7 @@ int main(const int argc, const char* argv[])
     }
 
     jotter::record_note(argv[1]);
+    jotter::get_config();
 
     return EXIT_SUCCESS;
 }

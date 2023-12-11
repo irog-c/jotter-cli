@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.27.9)
 
 project(jotter)
 
+set(CMAKE_CXX_STANDARD 20)
+
 include_directories(
     ${PROJECT_SOURCE_DIR}/include
     ${PROJECT_SOURCE_DIR}/src
@@ -13,26 +15,22 @@ set(ALL_SOURCES
     "${PROJECT_SOURCE_DIR}/src/main.cpp"
 )
 
-
 add_executable(${PROJECT_NAME} ${ALL_SOURCES})
 
 add_subdirectory(external/fmt)
+add_subdirectory(external/json)
 
+# Add the include directories for fmt
 target_include_directories(
     ${PROJECT_NAME} 
     PUBLIC external/fmt/include
 )
 
-target_link_directories(
-    ${PROJECT_NAME}
-    PRIVATE external/fmt/src
-)
-
+# Link the libraries
 target_link_libraries(
     ${PROJECT_NAME}
-    fmt
+    PUBLIC fmt
+    PRIVATE nlohmann_json
 )
-
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 20)
 
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)
