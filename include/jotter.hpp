@@ -10,5 +10,5 @@ namespace jotter
     };
 
     void record_note(std::string_view) noexcept;
-    config get_config();
+    [[nodiscard]] config get_config();
 }
