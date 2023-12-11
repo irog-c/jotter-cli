@@ -6,13 +6,11 @@
 
 #include <jotter.hpp>
 
-static constexpr auto default_notes_directory = "/jotter";
-static constexpr auto default_notes_location = "/jotter/notes.txt";
-
 namespace jotter
 {
     static config get_default_config()
     {
+        static constexpr auto default_notes_location = "/jotter/notes.txt";        
         return {
             .notes_location = default_notes_location
         };
@@ -27,7 +25,7 @@ namespace jotter
     void record_note(std::string_view note, const config& cfg)
     {
         const auto home_path = get_home_location();
-        auto notes_path = home_path + default_notes_location;
+        auto notes_path = home_path + cfg.notes_location;
         auto file = std::fstream(notes_path, std::fstream::in | std::fstream::out | std::fstream::app);
         if(!file.is_open())
         {
