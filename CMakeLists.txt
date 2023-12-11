@@ -20,13 +20,11 @@ add_executable(${PROJECT_NAME} ${ALL_SOURCES})
 add_subdirectory(external/fmt)
 add_subdirectory(external/json)
 
-# Add the include directories for fmt
 target_include_directories(
     ${PROJECT_NAME} 
     PUBLIC external/fmt/include
 )
 
-# Link the libraries
 target_link_libraries(
     ${PROJECT_NAME}
     PUBLIC fmt

@@ -12,10 +12,10 @@ int main(const int argc, const char* argv[]) try
 
     auto config = jotter::get_config();
     jotter::record_note(argv[1], config);
-    
 
     return EXIT_SUCCESS;
-} catch(const std::exception& e)
+}
+catch(const std::exception& e)
 {
     fmt::println("Exception caught: {}.", e.what());
 }

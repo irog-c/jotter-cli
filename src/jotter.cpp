@@ -61,7 +61,6 @@ namespace jotter
         auto file = std::ifstream(config_file);
         if(!file.is_open())
         {
-            fmt::println("b");
             throw std::runtime_error(fmt::format("Could not open file {}", config_file));
         }
 
