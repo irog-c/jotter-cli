@@ -15,7 +15,7 @@ namespace jotter
         const auto home_path = get_home_location();
         auto notes_path = home_path + cfg.notes_location;
         auto file = std::fstream(notes_path, std::fstream::in | std::fstream::out | std::fstream::app);
-        if(!file.is_open())
+        if(not file.is_open())
         {
             throw std::runtime_error(fmt::format("Could not open file {}", notes_path));
         }

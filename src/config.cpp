@@ -21,9 +21,9 @@ namespace jotter
         static constexpr auto config_location = "/jotter-config.json";
         auto config_file = get_home_location() + config_location;
         auto file = std::ifstream(config_file);
-        if(!file.is_open())
+        if(not file.is_open())
         {
-            throw std::runtime_error(fmt::format("Could not open file {}", config_file));
+            throw std::runtime_error(fmt::format("Could not open config file {}", config_file));
         }
 
         nlohmann::json config_json;
