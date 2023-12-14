@@ -10,8 +10,12 @@ include_directories(
 )
 
 set(ALL_SOURCES
-    "${PROJECT_SOURCE_DIR}/include/jotter.hpp"
-    "${PROJECT_SOURCE_DIR}/src/jotter.cpp"
+    "${PROJECT_SOURCE_DIR}/include/note_manager.hpp"
+    "${PROJECT_SOURCE_DIR}/include/common.hpp"
+    "${PROJECT_SOURCE_DIR}/include/config.hpp"
+    "${PROJECT_SOURCE_DIR}/src/note_manager.cpp"
+    "${PROJECT_SOURCE_DIR}/src/common.cpp"
+    "${PROJECT_SOURCE_DIR}/src/config.cpp"
     "${PROJECT_SOURCE_DIR}/src/main.cpp"
 )
 

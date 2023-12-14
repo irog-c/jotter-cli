@@ -1,5 +1,5 @@
 #include <fmt/core.h>
-#include <jotter.hpp>
+#include <note_manager.hpp>
 
 int main(const int argc, const char* argv[]) try
 {
