@@ -33,7 +33,7 @@ namespace jotter
         file.close();
 
         return {
-            .notes_location = (config_json.contains("notesLocation") ? std::string(config_json["notesLocation"]) : default_config.notes_location)
+            .notes_location = (config_json.contains("notesLocation") && config_json["notesLocation"].is_string() ? std::string(config_json["notesLocation"]) : default_config.notes_location)
         };
     }
 }
