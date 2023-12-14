@@ -1,5 +1,6 @@
-#include <fmt/core.h>
 #include <note_manager.hpp>
+
+#include <fmt/core.h>
 
 int main(const int argc, const char* argv[]) try
 {

@@ -1,10 +1,10 @@
-#include <fstream>
+#include <config.hpp>
+#include <common.hpp>
 
 #include <fmt/core.h>
 #include <nlohmann/json.hpp>
 
-#include <config.hpp>
-#include <common.hpp>
+#include <fstream>
 
 namespace jotter
 {
@@ -15,7 +15,7 @@ namespace jotter
             .notes_location = default_notes_location
         };
     }
-    
+
     [[nodiscard]] config get_config()
     {
         static constexpr auto config_location = "/jotter-config.json";

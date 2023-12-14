@@ -1,12 +1,12 @@
-#include <fstream>
-#include <exception>
+#include <note_manager.hpp>
+#include <config.hpp>
+#include <common.hpp>
 
 #include <fmt/core.h>
 #include <nlohmann/json.hpp>
 
-#include <note_manager.hpp>
-#include <config.hpp>
-#include <common.hpp>
+#include <fstream>
+#include <exception>
 
 namespace jotter
 {

@@ -1,8 +1,8 @@
+#include <common.hpp>
+
 #include <string_view>
 #include <fstream>
 #include <filesystem>
-
-#include <common.hpp>
 
 namespace jotter
 {

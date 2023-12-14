@@ -1,9 +1,9 @@
 #pragma once
 
+#include <config.hpp>
+
 #include <string_view>
 #include <string>
-
-#include <config.hpp>
 
 namespace jotter
 {
