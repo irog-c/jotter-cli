@@ -23,16 +23,19 @@ add_executable(${PROJECT_NAME} ${ALL_SOURCES})
 
 add_subdirectory(external/fmt)
 add_subdirectory(external/json)
+add_subdirectory(external/cxxopts)
 
 target_include_directories(
     ${PROJECT_NAME} 
     PUBLIC external/fmt/include
+    PUBLIC external/cxxopts/include
 )
 
 target_link_libraries(
     ${PROJECT_NAME}
     PUBLIC fmt
     PRIVATE nlohmann_json
+    PRIVATE cxxopts
 )
 
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)

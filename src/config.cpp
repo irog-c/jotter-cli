@@ -18,7 +18,7 @@ namespace jotter
 
     [[nodiscard]] config get_config()
     {
-        static constexpr auto config_location = "/jotter-config.json";
+        static constexpr auto config_location = "jotter-config.json";
         auto config_file = get_home_location() + config_location;
         auto file = std::ifstream(config_file);
         if(not file.is_open())
