@@ -2,7 +2,7 @@
 
 ## To build it run the scripts like so:
 
-```
+```console
 # First we want to fetch all submodules:
 ./scripts/get-all-submodules.sh
 
@@ -27,10 +27,12 @@ Usage:
 
 ## For example:
 
-```
+```console
 jotter --note "This is a note"
+```
 
 or
 
+```console
 jotter -n "This is a note"
 ``` 
