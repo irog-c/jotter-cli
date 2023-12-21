@@ -1,6 +1,6 @@
-Simple command line utility for keeping track of notes
+# Simple command line utility for keeping track of notes
 
-To build it run the scripts like so:
+## To build it run the scripts like so:
 
 ```
 # First we want to fetch all submodules:
@@ -14,7 +14,7 @@ To build it run the scripts like so:
 ./scripts/build-and-install.sh
 ```
 
-Usage:
+## Usage:
 
 ```
 Command line utility for managing notes
@@ -25,7 +25,7 @@ Usage:
   -h, --help      Print usage
 ```
 
-For example:
+## For example:
 
 ```
 jotter --note "This is a note"
