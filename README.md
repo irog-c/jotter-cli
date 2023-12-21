@@ -10,8 +10,7 @@
 ```console
 ./scripts/configure-cmake.sh
 ```
-### Finally we want to build and install the program
-### in the local bin folder of the current user
+### Finally we want to build and install the program in the local bin folder of the current user:
 ```console
 ./scripts/build-and-install.sh
 ```
