@@ -2,15 +2,17 @@
 
 ## To build it run the scripts like so:
 
+### First we want to fetch all submodules:
 ```console
-# First we want to fetch all submodules:
 ./scripts/get-all-submodules.sh
-
-# Then we want to configure CMake:
+```
+### Then we want to configure CMake:
+```console
 ./scripts/configure-cmake.sh
-
-# Finally we want to build and install the program
-# in the local bin folder of the current user
+```
+### Finally we want to build and install the program
+### in the local bin folder of the current user
+```console
 ./scripts/build-and-install.sh
 ```
 
