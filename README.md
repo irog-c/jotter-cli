@@ -26,14 +26,12 @@ Usage:
   -h, --help      Print usage
 ```
 
-## For example:
+### For example:
 
 ```console
 jotter --note "This is a note"
 ```
-
-or
-
+### or
 ```console
 jotter -n "This is a note"
 ``` 
