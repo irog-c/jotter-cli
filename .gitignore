@@ -50,3 +50,4 @@ _deps
 
 # VSCode stuff
 .vscode
+.idea
