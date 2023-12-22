@@ -3,7 +3,6 @@
 #include <config.hpp>
 
 #include <string_view>
-#include <string>
 
 namespace jotter
 {
