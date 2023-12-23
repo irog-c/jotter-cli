@@ -21,7 +21,7 @@ try
 {
     auto cfg            = jotter::get_config();
     auto parsed_options = parse_options(argc, argv, cfg);
-    if(parsed_options.count("help") or argc == 1)
+    if(parsed_options.count("help") >= 1u or argc == 1)
     {
         fmt::println("{}", options.help());
         return EXIT_SUCCESS;
