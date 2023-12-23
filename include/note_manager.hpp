@@ -6,5 +6,5 @@
 
 namespace jotter
 {
-    void record_note(std::string_view, const config&);   
+    void record_note(std::string_view, const config&);
 }

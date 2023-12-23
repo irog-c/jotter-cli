@@ -10,4 +10,4 @@ namespace jotter
     };
 
     [[nodiscard]] config get_config();
-}
+}  // namespace jotter

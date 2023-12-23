@@ -10,4 +10,4 @@ namespace jotter
         static auto home_location = std::filesystem::path(getenv("HOME")).string() + "/";
         return home_location;
     }
-}
+}  // namespace jotter
