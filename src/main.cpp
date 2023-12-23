@@ -31,7 +31,7 @@ int main(
 {   
     auto config = jotter::get_config();
     auto parsed_options = init_options(argc, argv, config);
-    if(parsed_options.count("help"))
+    if(parsed_options.count("help") || argc == 1)
     {
         fmt::println("{}", options.help());
         return EXIT_SUCCESS;
