@@ -11,7 +11,11 @@ static auto options = cxxopts::Options("jotter", "Command line utility for manag
 
 [[nodiscard]] static auto parse_options(const int argc, const char* argv[], [[maybe_unused]] jotter::config& cfg)
 {
-    options.add_options()("n,note", "Note to write", cxxopts::value<std::string>())("h,help", "Print usage");
+    // clang-format off
+    options.add_options()
+    ("n,note", "Note to write", cxxopts::value<std::string>())
+    ("h,help", "Print usage");
+    // clang-format on
 
     return options.parse(argc, argv);
 }
