@@ -1,7 +1,5 @@
 cmake_minimum_required(VERSION 3.27.9)
-
 project(jotter)
-
 set(CMAKE_CXX_STANDARD 20)
 
 include_directories(
@@ -21,20 +19,39 @@ set(ALL_SOURCES
 
 add_executable(${PROJECT_NAME} ${ALL_SOURCES})
 
-add_subdirectory(external/fmt)
-add_subdirectory(external/json)
-add_subdirectory(external/cxxopts)
+include(FetchContent)
+
+FetchContent_Declare(
+        cxxopts
+        GIT_REPOSITORY https://github.com/jarro2783/cxxopts.git
+        GIT_TAG        v3.1.1
+)
+FetchContent_Declare(
+        fmt
+        GIT_REPOSITORY https://github.com/fmtlib/fmt.git
+        GIT_TAG        10.1.1
+)
+FetchContent_Declare(
+        json
+        GIT_REPOSITORY https://github.com/ArthurSonzogni/nlohmann_json_cmake_fetchcontent
+        GIT_PROGRESS TRUE
+        GIT_SHALLOW TRUE
+        GIT_TAG v3.11.2
+)
+
+FetchContent_MakeAvailable(cxxopts fmt json)
 
 target_include_directories(
     ${PROJECT_NAME} 
-    PUBLIC external/fmt/include
-    PUBLIC external/cxxopts/include
+    PUBLIC ${fmt_SOURCE_DIR}/include
+    PUBLIC ${cxxopts_SOURCE_DIR}/include
+    PUBLIC ${json_SOURCE_DIR}/single_include
 )
 
 target_link_libraries(
     ${PROJECT_NAME}
     PUBLIC fmt
-    PRIVATE nlohmann_json
+    PRIVATE nlohmann_json::nlohmann_json
     PRIVATE cxxopts
 )
 
