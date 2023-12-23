@@ -4,7 +4,6 @@
 #include <fmt/color.h>
 #include <cxxopts.hpp>
 
-#include <algorithm>
 #include <string>
 #include <exception>
 

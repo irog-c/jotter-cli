@@ -3,10 +3,7 @@
 #include <common.hpp>
 
 #include <fmt/core.h>
-#include <nlohmann/json.hpp>
-
 #include <fstream>
-#include <exception>
 
 namespace jotter
 {
