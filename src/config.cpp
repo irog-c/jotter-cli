@@ -26,10 +26,9 @@ namespace jotter
 
         nlohmann::json config_json;
         file >> config_json;
-        auto default_config = get_default_config();
-
         file.close();
 
+        auto default_config = get_default_config();
         return {.notes_location = (config_json.contains("notesLocation") && config_json["notesLocation"].is_string()
                                        ? std::string(config_json["notesLocation"])
                                        : default_config.notes_location)};
