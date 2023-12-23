@@ -43,14 +43,14 @@ FetchContent_MakeAvailable(cxxopts fmt json)
 
 target_include_directories(
     ${PROJECT_NAME} 
-    PUBLIC ${fmt_SOURCE_DIR}/include
-    PUBLIC ${cxxopts_SOURCE_DIR}/include
-    PUBLIC ${json_SOURCE_DIR}/single_include
+    PRIVATE ${fmt_SOURCE_DIR}/include
+    PRIVATE ${cxxopts_SOURCE_DIR}/include
+    PRIVATE ${json_SOURCE_DIR}/single_include
 )
 
 target_link_libraries(
     ${PROJECT_NAME}
-    PUBLIC fmt
+    PRIVATE fmt
     PRIVATE nlohmann_json::nlohmann_json
     PRIVATE cxxopts
 )
