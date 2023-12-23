@@ -9,7 +9,7 @@
 
 static auto options = cxxopts::Options("jotter", "Command line utility for managing notes");
 
-[[nodiscard]] static auto init_options(const int argc, const char* argv[], [[maybe_unused]] jotter::config& cfg)
+[[nodiscard]] static auto parse_options(const int argc, const char* argv[], [[maybe_unused]] jotter::config& cfg)
 {
     options.add_options()("n,note", "Note to write", cxxopts::value<std::string>())("h,help", "Print usage");
 
@@ -20,7 +20,7 @@ int main(const int argc, const char* argv[])
 try
 {
     auto cfg            = jotter::get_config();
-    auto parsed_options = init_options(argc, argv, cfg);
+    auto parsed_options = parse_options(argc, argv, cfg);
     if(parsed_options.count("help") or argc == 1)
     {
         fmt::println("{}", options.help());
