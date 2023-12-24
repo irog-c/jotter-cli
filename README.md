@@ -1,4 +1,4 @@
-# Jotter CLI
+# <div align="center"> Jotter CLI </div>
 ```Simple command line utility for keeping track of notes```
 
 ## To build it run the scripts from the *project root folder* like so:
