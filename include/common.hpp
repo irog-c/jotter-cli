@@ -10,5 +10,5 @@ namespace jotter
 
     epoch_time_t get_epoch_time();
 
-    void create_file_if_nonexistant(std::string_view file_path, std::string_view file_contents = "");
+    void create_file_if_nonexistent(std::string_view file_path, std::string_view file_contents = "");
 }  // namespace jotter

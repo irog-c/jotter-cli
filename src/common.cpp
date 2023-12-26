@@ -21,7 +21,7 @@ namespace jotter
             .count();
     }
 
-    void create_file_if_nonexistant(std::string_view file_path, std::string_view file_contents)
+    void create_file_if_nonexistent(std::string_view file_path, std::string_view file_contents)
     {
         if(not std::filesystem::exists(file_path))
         {

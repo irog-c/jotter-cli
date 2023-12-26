@@ -11,7 +11,7 @@ namespace jotter
 {
     static note_entry create_entry(std::string_view note)
     {
-        return note_entry{
+        return {
             .note_text  = note,
             .epoch_time = get_epoch_time(),
         };
@@ -36,7 +36,7 @@ namespace jotter
     void record_note(std::string_view note, const config& cfg)
     {
         const auto& notes_path = cfg.notes_location;
-        create_file_if_nonexistant(notes_path, "{}\n");
+        create_file_if_nonexistent(notes_path, "{}\n");
 
         auto file = std::fstream(notes_path, std::fstream::in | std::fstream::out);
         if(not file.is_open()) throw std::runtime_error(fmt::format("Could not open file {} for writing.", notes_path));
