@@ -22,12 +22,12 @@ namespace jotter
         nlohmann::json json_data;
         file >> json_data;
 
-        if(not json_data.contains("notes_list")) json_data["notes_list"] = nlohmann::json::array();
+        if(not json_data.contains("entries")) json_data["entries"] = nlohmann::json::array();
 
         auto entry_object          = nlohmann::json::object();
         entry_object["note_text"]  = entry.note_text;
         entry_object["epoch_time"] = entry.epoch_time;
-        json_data["notes_list"].push_back(entry_object);
+        json_data["entries"].push_back(entry_object);
 
         file.seekp(0);
         file << json_data.dump(4) << '\n';
@@ -39,10 +39,30 @@ namespace jotter
         create_file_if_nonexistant(notes_path, "{}\n");
 
         auto file = std::fstream(notes_path, std::fstream::in | std::fstream::out);
-        if(not file.is_open()) throw std::runtime_error(fmt::format("Could not open file {}", notes_path));
+        if(not file.is_open()) throw std::runtime_error(fmt::format("Could not open file {} for writing.", notes_path));
 
         auto entry = create_entry(note);
         write_entry_to_json(entry, file);
+        file.close();
+    }
+
+    void get_notes([[maybe_unused]] const config& cfg)
+    {
+        const auto& notes_path = cfg.notes_location;
+        auto file              = std::fstream(notes_path, std::fstream::in);
+        if(not file.is_open()) throw std::runtime_error(fmt::format("Could not open file {} for reading.", notes_path));
+
+        nlohmann::json json_data;
+        file >> json_data;
+
+        if(not json_data.contains("entries"))
+        {
+            file.close();
+            return;
+        }
+
+        for(const auto& entry: json_data["entries"]) fmt::println("{}", std::string(entry["note_text"]));
+
         file.close();
     }
 }  // namespace jotter

@@ -14,6 +14,7 @@ static auto options = cxxopts::Options("jotter", "Command line utility for manag
     // clang-format off
     options.add_options()
     ("n,note", "Note to write", cxxopts::value<std::string>())
+    ("g,get", "Get all notes")
     ("h,help", "Print usage");
     // clang-format on
 
@@ -28,6 +29,12 @@ try
     if(parsed_options.count("help") >= 1u or argc == 1)
     {
         fmt::println("{}", options.help());
+        return EXIT_SUCCESS;
+    }
+
+    if(parsed_options.count("get"))
+    {
+        jotter::get_notes(cfg);
         return EXIT_SUCCESS;
     }
 
