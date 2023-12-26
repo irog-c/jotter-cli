@@ -65,9 +65,10 @@ namespace jotter
         {
             if(cfg.with_timestamp)
             {
-                auto time =
-                    std::chrono::system_clock::time_point(std::chrono::milliseconds(epoch_time_t(entry["epoch_time"])));
-                fmt::println("{} {}", time, std::string(entry["note_text"]));
+                fmt::println(
+                    "{} {}",
+                    std::chrono::system_clock::time_point(std::chrono::milliseconds(epoch_time_t(entry["epoch_time"]))),
+                    std::string(entry["note_text"]));
             }
             else
                 fmt::println("{}", std::string(entry["note_text"]));
