@@ -11,7 +11,7 @@ namespace jotter
 {
     inline static config get_default_config()
     {
-        static auto default_notes_location = get_home_location() + "/.config/jotter/notes.json";
+        static auto default_notes_location = get_home_location() + ".config/jotter/notes.json";
         return {.notes_location = default_notes_location};
     }
 
