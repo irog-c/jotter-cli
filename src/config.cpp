@@ -26,7 +26,6 @@ namespace jotter
 
         nlohmann::json config_json;
         file >> config_json;
-        file.close();
 
         auto default_config = get_default_config();
         return {.notes_location = (config_json.contains("notesLocation") and config_json["notesLocation"].is_string()

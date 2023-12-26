@@ -43,7 +43,6 @@ namespace jotter
 
         auto entry = create_entry(note);
         write_entry_to_json(entry, file);
-        file.close();
     }
 
     void get_notes([[maybe_unused]] const config& cfg)
@@ -55,14 +54,8 @@ namespace jotter
         nlohmann::json json_data;
         file >> json_data;
 
-        if(not json_data.contains("entries"))
-        {
-            file.close();
-            return;
-        }
+        if(not json_data.contains("entries")) return;
 
         for(const auto& entry: json_data["entries"]) fmt::println("{}", std::string(entry["note_text"]));
-
-        file.close();
     }
 }  // namespace jotter

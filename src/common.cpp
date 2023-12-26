@@ -30,7 +30,6 @@ namespace jotter
             if(not file.is_open()) throw std::runtime_error(fmt::format("Could not create file {}", file_path));
 
             file << file_contents;
-            file.close();
         }
     }
 }  // namespace jotter
