@@ -3,6 +3,7 @@
 
 #include <nlohmann/json.hpp>
 #include <fmt/core.h>
+#include <fmt/chrono.h>
 
 #include <fstream>
 #include <iostream>
@@ -49,13 +50,27 @@ namespace jotter
     {
         const auto& notes_path = cfg.notes_location;
         auto file              = std::fstream(notes_path, std::fstream::in);
-        if(not file.is_open()) throw std::runtime_error(fmt::format("Could not open file {} for reading.", notes_path));
+        if(not file.is_open())
+        {
+            fmt::println("No notes recorded.");
+            return;
+        }
 
         nlohmann::json json_data;
         file >> json_data;
 
         if(not json_data.contains("entries")) return;
 
-        for(const auto& entry: json_data["entries"]) fmt::println("{}", std::string(entry["note_text"]));
+        for(const auto& entry: json_data["entries"])
+        {
+            if(cfg.with_timestamp)
+            {
+                auto time =
+                    std::chrono::system_clock::time_point(std::chrono::milliseconds(epoch_time_t(entry["epoch_time"])));
+                fmt::println("{} {}", time, std::string(entry["note_text"]));
+            }
+            else
+                fmt::println("{}", std::string(entry["note_text"]));
+        }
     }
 }  // namespace jotter

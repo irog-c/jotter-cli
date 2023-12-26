@@ -14,11 +14,16 @@ static auto options = cxxopts::Options("jotter", "Command line utility for manag
     // clang-format off
     options.add_options()
     ("n,note", "Note to write", cxxopts::value<std::string>())
+    ("t,timestamp", "Display timestamp with each note", cxxopts::value<bool>())
     ("g,get", "Get all notes")
     ("h,help", "Print usage");
     // clang-format on
 
-    return options.parse(argc, argv);
+    auto parsed_options = options.parse(argc, argv);
+
+    if(parsed_options.count("timestamp") >= 1u) cfg.with_timestamp = parsed_options["timestamp"].as<bool>();
+
+    return parsed_options;
 }
 
 int main(const int argc, const char* argv[])
