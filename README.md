@@ -18,8 +18,10 @@ Command line utility for managing notes
 Usage:
   jotter [OPTION...]
 
-  -n, --note arg  Note to write
-  -h, --help      Print usage
+  -n, --note arg   Note to write
+  -t, --timestamp  Display timestamp with each note
+  -g, --get        Get all notes
+  -h, --help       Print usage
 ```
 
 ### For example:
