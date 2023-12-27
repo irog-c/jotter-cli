@@ -66,7 +66,7 @@ namespace jotter
             if(cfg.with_timestamp)
             {
                 fmt::println(
-                    "{} {}",
+                    "[{}] {}",
                     std::chrono::system_clock::time_point(std::chrono::milliseconds(epoch_time_t(entry["epoch_time"]))),
                     std::string(entry["note_text"]));
             }
