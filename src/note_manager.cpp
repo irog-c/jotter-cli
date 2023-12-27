@@ -18,7 +18,7 @@ namespace jotter
         };
     }
 
-    static void write_entry_to_json(const note_entry& entry, auto& file)
+    static void write_entry_to_file(const note_entry& entry, auto& file)
     {
         nlohmann::json json_data;
         file >> json_data;
@@ -43,7 +43,7 @@ namespace jotter
         if(not file.is_open()) throw std::runtime_error(fmt::format("Could not open file {} for writing.", notes_path));
 
         auto entry = create_entry(note);
-        write_entry_to_json(entry, file);
+        write_entry_to_file(entry, file);
     }
 
     void get_notes(const config& cfg)
