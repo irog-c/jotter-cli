@@ -31,11 +31,13 @@ namespace jotter
         file >> config_json;
 
         auto default_config = get_default_config();
-        return {.notes_location = (config_json.contains("notesLocation") and config_json["notesLocation"].is_string()
-                                       ? std::string(config_json["notesLocation"])
-                                       : default_config.notes_location),
-                .with_timestamp = (config_json.contains("withTimestamp") and config_json["withTimestamp"].is_boolean()
-                                       ? bool(config_json["withTimestamp"])
-                                       : default_config.with_timestamp), };
+        return {
+            .notes_location = (config_json.contains("notesLocation") and config_json["notesLocation"].is_string()
+                                   ? std::string(config_json["notesLocation"])
+                                   : default_config.notes_location),
+            .with_timestamp = (config_json.contains("withTimestamp") and config_json["withTimestamp"].is_boolean()
+                                   ? bool(config_json["withTimestamp"])
+                                   : default_config.with_timestamp),
+        };
     }
 }  // namespace jotter
