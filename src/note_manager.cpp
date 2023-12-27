@@ -31,7 +31,7 @@ namespace jotter
         json_data["entries"].push_back(entry_object);
 
         file.seekp(0);
-        file << json_data.dump(4) << '\n';
+        file << json_data.dump() << '\n';
     }
 
     void record_note(std::string_view note, const config& cfg)
