@@ -14,7 +14,7 @@ static auto options = cxxopts::Options("jotter", "Command line utility for manag
     // clang-format off
     options.add_options()
     ("n,note", "Note to write", cxxopts::value<std::string>())
-    ("t,timestamp", "Display timestamp with each note", cxxopts::value<bool>())
+    ("t,timestamp", "Display timestamp for each note", cxxopts::value<bool>())
     ("g,get", "Get all notes")
     ("h,help", "Print usage");
     // clang-format on
