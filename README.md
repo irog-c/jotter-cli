@@ -19,7 +19,7 @@ Usage:
   jotter [OPTION...]
 
   -n, --note arg   Note to write
-  -t, --timestamp  Display timestamp with each note
+  -t, --timestamp  Display timestamp for each note
   -g, --get        Get all notes
   -h, --help       Print usage
 ```
