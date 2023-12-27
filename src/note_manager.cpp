@@ -46,7 +46,7 @@ namespace jotter
         write_entry_to_json(entry, file);
     }
 
-    void get_notes([[maybe_unused]] const config& cfg)
+    void get_notes(const config& cfg)
     {
         const auto& notes_path = cfg.notes_location;
         auto file              = std::fstream(notes_path, std::fstream::in);

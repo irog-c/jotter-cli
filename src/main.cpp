@@ -9,7 +9,7 @@
 
 static auto options = cxxopts::Options("jotter", "Command line utility for managing notes");
 
-[[nodiscard]] static auto parse_options(const int argc, const char* argv[], [[maybe_unused]] jotter::config& cfg)
+[[nodiscard]] static auto parse_options(const int argc, const char* argv[], jotter::config& cfg)
 {
     // clang-format off
     options.add_options()

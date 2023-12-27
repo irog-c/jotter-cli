@@ -15,5 +15,5 @@ namespace jotter
 
     void record_note(std::string_view, const config&);
 
-    void get_notes([[maybe_unused]] const config& cfg);
+    void get_notes(const config& cfg);
 }  // namespace jotter
