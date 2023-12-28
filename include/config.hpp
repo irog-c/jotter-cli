@@ -7,6 +7,7 @@ namespace jotter
     struct config
     {
         std::string notes_location;
+        bool with_timestamp;
     };
 
     [[nodiscard]] config get_config();
