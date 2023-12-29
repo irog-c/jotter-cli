@@ -2,7 +2,7 @@
 ```Simple command line utility for keeping track of notes```
 
 ## To build it run the following commands from the *project root folder* like so:
-### First we want to Conan to prepare generators:
+### First we want Conan to prepare the generators:
 ```console
 conan install . --build=missing
 ```
