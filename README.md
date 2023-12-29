@@ -1,14 +1,14 @@
 # <div align="center"> Jotter CLI </div>
 ```Simple command line utility for keeping track of notes```
 
-## To build it run the scripts from the *project root folder* like so:
-### First we want to configure CMake:
+## To build it run the following commands from the *project root folder* like so:
+### First we want to Conan to prepare generators:
 ```console
-./scripts/configure-cmake.sh
+conan install . --build=missing
 ```
 ### Then we want to build and install the program in the local bin folder of the current user:
 ```console
-./scripts/build-and-install.sh
+conan build .
 ```
 
 ## Usage:
