@@ -1,3 +1,4 @@
 #!/bin/bash
 
-sudo cmake --build build --target install
+conan install . --build=missing
+

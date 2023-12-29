@@ -51,3 +51,7 @@ _deps
 # VSCode stuff
 .vscode
 .idea
+
+# Conan
+CMakeUserPresets.json
+conan_provider.cmake
