@@ -4,6 +4,7 @@ from conan import ConanFile
 from conan.tools.cmake import CMake, cmake_layout
 from conan.tools.files import copy
 
+
 class Jotter(ConanFile):
     name = "jotter"
     version = "0.1"
