@@ -23,4 +23,4 @@ target_link_libraries(
     cxxopts::cxxopts
 )
 
-install(TARGETS ${PROJECT_NAME} DESTINATION bin)
+install(TARGETS ${PROJECT_NAME})

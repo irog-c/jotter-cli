@@ -2,13 +2,13 @@
 ```Simple command line utility for keeping track of notes```
 
 ## To build it run the following commands from the *project root folder* like so:
-### First we want to Conan to prepare generators:
+### Create the conan package:
 ```console
-conan install . --build=missing
+conan create .
 ```
-### Then we want to build and install the program in the local bin folder of the current user:
+### Deploy the binary to any folder, optionally in your PATH, for example:
 ```console
-conan build .
+conan install --deployer-folder /Users/<username>/.bin --deployer-package jotter/<version> --requires jotter/<version>
 ```
 
 ## Usage:
