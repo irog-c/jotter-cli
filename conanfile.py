@@ -6,20 +6,11 @@ from conan.tools.files import copy
 
 
 class Jotter(ConanFile):
-    name = "jotter"
-    version = "0.1.0"
-    author = "Igor Mihajlov"
-
-    package_type = "application"
-    settings = "os", "compiler", "build_type", "arch"
-    generators = "CMakeToolchain", "CMakeDeps"
-
-    exports_sources = "CMakeLists.txt", "src/*", "include/*"
+    def init(self):
+        self.__dict__.update(self.conan_data["metadata"])
 
     def requirements(self):
-        requirements = self.conan_data.get("requirements", [])
-        for requirement in requirements:
-            self.requires(requirement)
+        [self.requires(requirement) for requirement in self.conan_data["requirements"]]
 
     def layout(self):
         cmake_layout(self)
