@@ -2,21 +2,24 @@
 
 ```Simple command line utility for keeping track of notes```
 
-## To build it run the following commands from the *project root folder* like so:
+## To build it run the following commands from the *project root folder*
 
-### Create the conan package:
+### Installing Conan
+#### Visit the Conan website for detailed installation instructions: [Conan Installation Guide](https://docs.conan.io/2/installation.html).
+
+### Create the conan package
 
 ```console
 conan create .
 ```
 
-### Deploy the binary to any folder, optionally in your PATH, for example:
+### Deploy the binary to any folder, optionally in your PATH
 
 ```console
 conan install --deployer-folder /Users/<username>/.bin --deployer-package jotter/<version> --requires jotter/<version>
 ```
 
-## Usage:
+## Usage
 
 ```
 Command line utility for managing notes
@@ -29,13 +32,11 @@ Usage:
   -h, --help       Print usage
 ```
 
-### For example:
+### Examples
 
 ```console
 jotter --note "This is a note"
 ```
-
-### or
 
 ```console
 jotter -n "This is a note"
