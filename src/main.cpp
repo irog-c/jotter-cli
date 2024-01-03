@@ -11,13 +11,26 @@ static auto options = cxxopts::Options("jotter", "Command line utility for manag
 
 [[nodiscard]] static auto parse_options(const int argc, const char* argv[], jotter::config& cfg)
 {
-    // clang-format off
-    options.add_options()
-    ("n,note", "Note to write", cxxopts::value<std::string>())
-    ("t,timestamp", "Display timestamp for each note", cxxopts::value<bool>())
-    ("g,get", "Get all notes")
-    ("h,help", "Print usage");
-    // clang-format on
+    if(cfg.language == "ru")
+    {
+        // clang-format off
+        options.add_options()
+        ("n,note", "Создать запись", cxxopts::value<std::string>())
+        ("t,timestamp", "Отобразить время рядом с записью", cxxopts::value<bool>())
+        ("g,get", "Показать все записи")
+        ("h,help", "Помощь в использовании");
+        // clang-format on
+    }
+    else
+    {
+        // clang-format off
+        options.add_options()
+        ("n,note", "Note to write", cxxopts::value<std::string>())
+        ("t,timestamp", "Display timestamp for each note", cxxopts::value<bool>())
+        ("g,get", "Get all notes")
+        ("h,help", "Print usage");
+        // clang-format on
+    }
 
     auto parsed_options = options.parse(argc, argv);
 
