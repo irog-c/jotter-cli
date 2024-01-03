@@ -1,4 +1,4 @@
-#include <note_manager.hpp>
+#include <note.hpp>
 #include <config.hpp>
 
 #include <nlohmann/json.hpp>
@@ -10,7 +10,7 @@
 
 namespace jotter
 {
-    static note_entry create_entry(std::string_view note)
+    Note::note_entry Note::create_entry(std::string_view note)
     {
         return {
             .note_text  = note,
@@ -18,7 +18,7 @@ namespace jotter
         };
     }
 
-    static void write_entry_to_file(const note_entry& entry, auto& file)
+    void Note::write_entry_to_file(const Note::note_entry& entry, auto& file)
     {
         nlohmann::json json_data;
         file >> json_data;
@@ -34,9 +34,13 @@ namespace jotter
         file << json_data.dump() << '\n';
     }
 
-    void record_note(std::string_view note, const config& cfg)
+    Note::Note(config& cfg) : cfg_(cfg)
     {
-        const auto& notes_path = cfg.notes_location;
+    }
+
+    void Note::record(std::string_view note)
+    {
+        const auto& notes_path = cfg_.notes_location;
         create_file_if_nonexistent(notes_path, "{}\n");
 
         auto file = std::fstream(notes_path, std::fstream::in | std::fstream::out);
@@ -46,9 +50,9 @@ namespace jotter
         write_entry_to_file(entry, file);
     }
 
-    void get_notes(const config& cfg)
+    void Note::get()
     {
-        const auto& notes_path = cfg.notes_location;
+        const auto& notes_path = cfg_.notes_location;
         auto file              = std::fstream(notes_path, std::fstream::in);
         if(not file.is_open())
         {
@@ -63,7 +67,7 @@ namespace jotter
 
         for(const auto& entry: json_data["entries"])
         {
-            if(cfg.with_timestamp)
+            if(cfg_.with_timestamp)
             {
                 fmt::println(
                     "[{}] {}",

@@ -1,4 +1,4 @@
-#include <note_manager.hpp>
+#include <note.hpp>
 
 #include <fmt/core.h>
 #include <fmt/color.h>
@@ -50,14 +50,16 @@ try
         return EXIT_SUCCESS;
     }
 
+    auto note = jotter::Note(cfg);
+
     if(parsed_options.count("get"))
     {
-        jotter::get_notes(cfg);
+        note.get();
         return EXIT_SUCCESS;
     }
 
-    auto note = parsed_options["note"].as<std::string>();
-    jotter::record_note(note, cfg);
+    auto note_arg = parsed_options["note"].as<std::string>();
+    note.record(note_arg);
 
     return EXIT_SUCCESS;
 }
