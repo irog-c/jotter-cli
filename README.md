@@ -1,17 +1,34 @@
 # <div align="center"> Jotter CLI </div>
+
 ```Simple command line utility for keeping track of notes```
 
-## To build it run the scripts from the *project root folder* like so:
-### First we want to configure CMake:
+## To build it run the following commands from the *project root folder*
+
+### Installing Conan
+#### Visit the Conan website for detailed installation instructions: [Conan Installation Guide](https://docs.conan.io/2/installation.html).
+
+### IDE Integration
+#### If you are using a popular IDE like CLion, VSCode, or others, the relevant information can be found by following the link: [IDE Integration](https://docs.conan.io/2/integrations.html)
+
+### Creating a Conan Profile (If None Exists)
+
 ```console
-./scripts/configure-cmake.sh
-```
-### Then we want to build and install the program in the local bin folder of the current user:
-```console
-./scripts/build-and-install.sh
+conan profile detect --force
 ```
 
-## Usage:
+### Create the conan package
+
+```console
+conan create . --build=missing
+```
+
+### Deploy the binary to any folder, optionally in your PATH
+
+```console
+conan install --deployer-folder=/Users/<username>/.bin --deployer-package=jotter/<version> --requires=jotter/<version>
+```
+
+## Usage
 
 ```
 Command line utility for managing notes
@@ -24,12 +41,12 @@ Usage:
   -h, --help       Print usage
 ```
 
-### For example:
+### Examples
 
 ```console
 jotter --note "This is a note"
 ```
-### or
+
 ```console
 jotter -n "This is a note"
 ``` 

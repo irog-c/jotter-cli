@@ -1,0 +1,37 @@
+metadata:
+  name: jotter
+  version: 0.1.0
+
+  description: Jotter is a very simple utility which allows the user to manage notes from their command line.
+  license: MIT
+  author: Igor Mihajlov
+  url: https://github.com/irog-c/jotter-cli
+  topics:
+    - cmake
+    - cplusplus
+    - c++
+    - command-line-tool
+    - notes-app
+
+  package_type: application
+  settings:
+    - os
+    - compiler
+    - build_type
+    - arch
+  generators:
+    - CMakeToolchain
+    - CMakeDeps
+
+  exports:
+    - conandata.yml
+  exports_sources:
+    - CMakeLists.txt
+    - src/*
+    - include/*
+
+requirements:
+  - "nlohmann_json/[~3.11]"
+  - "fmt/[~10.1]"
+  - "cxxopts/[~3.1]"
+  - "gtest/[~1.14]"
