@@ -3,7 +3,7 @@ project(jotter)
 set(CMAKE_CXX_STANDARD 23)
 
 set(ALL_SOURCES
-        "${PROJECT_SOURCE_DIR}/src/note_manager.cpp"
+        "${PROJECT_SOURCE_DIR}/src/note.cpp"
         "${PROJECT_SOURCE_DIR}/src/common.cpp"
         "${PROJECT_SOURCE_DIR}/src/config.cpp"
         "${PROJECT_SOURCE_DIR}/src/main.cpp"
