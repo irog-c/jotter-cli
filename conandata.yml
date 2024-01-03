@@ -35,3 +35,4 @@ requirements:
   - "fmt/[~10.1]"
   - "cxxopts/[~3.1]"
   - "gtest/[~1.14]"
+  - "icu/[~74]"
