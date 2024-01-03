@@ -1,5 +1,7 @@
 #pragma once
 
+#define CXXOPTS_USE_UNICODE 1
+
 #include <string>
 
 namespace jotter

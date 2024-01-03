@@ -5,7 +5,6 @@
 #include <nlohmann/json.hpp>
 
 #include <fstream>
-#include <filesystem>
 
 namespace jotter
 {
@@ -13,6 +12,7 @@ namespace jotter
     {
         static auto default_notes_location = get_home_location() + ".config/jotter/notes.json";
         return {
+            .language = "en",
             .notes_location = default_notes_location,
             .with_timestamp = false,
         };
@@ -32,6 +32,9 @@ namespace jotter
 
         auto default_config = get_default_config();
         return {
+            .language       = (config_json.contains("language") and config_json["language"].is_string()
+                                   ? std::string(config_json["language"])
+                                   : default_config.language),
             .notes_location = (config_json.contains("notesLocation") and config_json["notesLocation"].is_string()
                                    ? std::string(config_json["notesLocation"])
                                    : default_config.notes_location),

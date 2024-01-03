@@ -15,12 +15,14 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/include
 find_package(cxxopts)
 find_package(fmt)
 find_package(nlohmann_json)
+find_package(ICU)
 
 target_link_libraries(
         ${PROJECT_NAME}
         fmt::fmt
         nlohmann_json::nlohmann_json
         cxxopts::cxxopts
+        ICU::uc
 )
 
 install(TARGETS ${PROJECT_NAME})
