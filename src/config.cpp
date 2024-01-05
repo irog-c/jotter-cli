@@ -7,15 +7,13 @@
 
 namespace jotter
 {
-    inline static fields get_default_config()
-    {
-        static auto default_notes_location = get_home_location() + ".config/jotter/notes.json";
+    Config::Fields Config::default_config_ = []() -> Config::Fields {
+        auto default_notes_location = get_home_location() + ".config/jotter/notes.json";
         return {
             .language       = "en",
             .notes_location = default_notes_location,
         };
-    }
-    fields Config::default_config_ = get_default_config();
+    }();
 
     Config::Config()
     {
@@ -27,19 +25,5 @@ namespace jotter
         if(not file.is_open()) throw std::runtime_error(fmt::format("Could not open config file {}", config_path));
 
         file >> config_json_;
-    }
-
-    std::string Config::get_language()
-    {
-        return (config_json_.contains("language") and config_json_["language"].is_string()
-                    ? std::string(config_json_["language"])
-                    : default_config_.language);
-    }
-
-    std::string Config::get_notes_location()
-    {
-        return (config_json_.contains("notesLocation") and config_json_["notesLocation"].is_string()
-                    ? std::string(config_json_["notesLocation"])
-                    : default_config_.notes_location);
     }
 }  // namespace jotter

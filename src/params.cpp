@@ -1,7 +1,5 @@
 #include <params.hpp>
 
-#include <fmt/core.h>
-
 namespace jotter
 {
     cxxopts::Options Params::options_ = cxxopts::Options("jotter", "Command line utility for managing notes");
@@ -31,35 +29,5 @@ namespace jotter
 
         parsed_options_ = options_.parse(argc, argv);
         empty_params_   = argc == 1;
-    }
-
-    bool Params::get_help()
-    {
-        return parsed_options_.count("help") >= 1u;
-    }
-
-    bool Params::get_get()
-    {
-        return parsed_options_.count("get") >= 1u;
-    }
-
-    bool Params::get_timestamp()
-    {
-        return parsed_options_.count("timestamp") >= 1u;
-    }
-
-    std::string Params::get_note()
-    {
-        return parsed_options_["note"].as<std::string>();
-    }
-
-    bool Params::empty() noexcept
-    {
-        return empty_params_;
-    }
-
-    void Params::print_help()
-    {
-        fmt::println("{}", options_.help());
     }
 }  // namespace jotter

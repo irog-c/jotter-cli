@@ -1,5 +1,6 @@
 #pragma once
 
+#include <fmt/core.h>
 #include <cxxopts.hpp>
 
 #include <string_view>
@@ -16,12 +17,34 @@ namespace jotter
        public:
         Params() = delete;
         Params(const int argc, const char* argv[], std::string_view language);
-        [[nodiscard]] bool empty() noexcept;
-        void print_help();
+        [[nodiscard]] inline bool empty() noexcept
+        {
+            return empty_params_;
+        }
 
-        [[nodiscard]] bool get_help();
-        [[nodiscard]] bool get_get();
-        [[nodiscard]] bool get_timestamp();
-        [[nodiscard]] std::string get_note();
+        inline void print_help()
+        {
+            fmt::println("{}", options_.help());
+        }
+
+        [[nodiscard]] inline bool get_help()
+        {
+            return parsed_options_.count("help") >= 1u;
+        }
+
+        [[nodiscard]] bool get_get()
+        {
+            return parsed_options_.count("get") >= 1u;
+        }
+
+        [[nodiscard]] bool get_timestamp()
+        {
+            return parsed_options_.count("timestamp") >= 1u;
+        }
+
+        [[nodiscard]] std::string get_note()
+        {
+            return parsed_options_["note"].as<std::string>();
+        }
     };
 }  // namespace jotter
