@@ -34,13 +34,13 @@ namespace jotter
         file << json_data.dump() << '\n';
     }
 
-    Note::Note(config& cfg) : cfg_(cfg)
+    Note::Note(Config& cfg, Params& params) : cfg_(cfg), params_(params)
     {
     }
 
     void Note::record(std::string_view note)
     {
-        const auto& notes_path = cfg_.notes_location;
+        auto notes_path = cfg_.get_notes_location();
         create_file_if_nonexistent(notes_path, "{}\n");
 
         auto file = std::fstream(notes_path, std::fstream::in | std::fstream::out);
@@ -52,8 +52,8 @@ namespace jotter
 
     void Note::get()
     {
-        const auto& notes_path = cfg_.notes_location;
-        auto file              = std::fstream(notes_path, std::fstream::in);
+        auto notes_path = cfg_.get_notes_location();
+        auto file       = std::fstream(notes_path, std::fstream::in);
         if(not file.is_open())
         {
             fmt::println("No notes recorded.");
@@ -67,7 +67,7 @@ namespace jotter
 
         for(const auto& entry: json_data["entries"])
         {
-            if(cfg_.with_timestamp)
+            if(params_.get_timestamp())
             {
                 fmt::println(
                     "[{}] {}",

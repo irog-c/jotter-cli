@@ -1,5 +1,6 @@
 #pragma once
 
+#include <params.hpp>
 #include <config.hpp>
 #include <common.hpp>
 
@@ -16,14 +17,15 @@ namespace jotter
             epoch_time_t epoch_time;
         };
 
-        const config& cfg_;
+        Config& cfg_;
+        Params& params_;
 
         note_entry create_entry(std::string_view);
         void write_entry_to_file(const note_entry& entry, auto& file);
 
        public:
         Note() = delete;
-        Note(config&);
+        Note(Config&, Params&);
 
         void get();
         void record(std::string_view);
