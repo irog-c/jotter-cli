@@ -16,12 +16,12 @@ namespace jotter
        public:
         Params() = delete;
         Params(const int argc, const char* argv[], std::string_view language);
-        bool empty() noexcept;
+        [[nodiscard]] bool empty() noexcept;
         void print_help();
 
-        bool get_help();
-        bool get_get();
-        bool get_timestamp();
-        std::string get_note();
+        [[nodiscard]] bool get_help();
+        [[nodiscard]] bool get_get();
+        [[nodiscard]] bool get_timestamp();
+        [[nodiscard]] std::string get_note();
     };
 }  // namespace jotter
