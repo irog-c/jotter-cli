@@ -32,17 +32,17 @@ namespace jotter
             return parsed_options_.count("help") >= 1u;
         }
 
-        [[nodiscard]] bool get_get()
+        [[nodiscard]] inline bool get_get()
         {
             return parsed_options_.count("get") >= 1u;
         }
 
-        [[nodiscard]] bool get_timestamp()
+        [[nodiscard]] inline bool get_timestamp()
         {
             return parsed_options_.count("timestamp") >= 1u;
         }
 
-        [[nodiscard]] std::string get_note()
+        [[nodiscard]] inline std::string get_note()
         {
             return parsed_options_["note"].as<std::string>();
         }
