@@ -10,7 +10,7 @@
 
 namespace jotter
 {
-    Note::note_entry Note::create_entry(std::string_view note)
+    Note::Entry Note::create_entry(std::string_view note)
     {
         return {
             .note_text  = note,
@@ -18,7 +18,7 @@ namespace jotter
         };
     }
 
-    void Note::write_entry_to_file(const Note::note_entry& entry, auto& file)
+    void Note::write_entry_to_file(const Note::Entry& entry, auto& file)
     {
         nlohmann::json json_data;
         file >> json_data;
