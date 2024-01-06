@@ -20,12 +20,12 @@ namespace jotter
         };
 
        private:
-        Config& cfg_;
-        Params& params_;
+        const Config& cfg_;
+        const Params& params_;
 
        public:
         Note() = delete;
-        Note(Config&, Params&);
+        Note(const Config&, const Params&);
 
         void get() const;
         void record(std::string_view) const;

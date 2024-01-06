@@ -34,7 +34,7 @@ namespace jotter
         file << json_data.dump() << '\n';
     }
 
-    Note::Note(Config& cfg, Params& params) : cfg_(cfg), params_(params)
+    Note::Note(const Config& cfg, const Params& params) : cfg_(cfg), params_(params)
     {
     }
 
