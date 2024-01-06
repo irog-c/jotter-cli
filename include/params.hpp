@@ -16,7 +16,9 @@ namespace jotter
 
        public:
         Params() = delete;
+
         Params(const int argc, const char* argv[], std::string_view language);
+
         [[nodiscard]] inline bool empty() noexcept
         {
             return empty_params_;
