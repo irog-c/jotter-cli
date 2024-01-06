@@ -6,7 +6,6 @@
 #include <fmt/chrono.h>
 
 #include <fstream>
-#include <iostream>
 
 namespace jotter
 {
