@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.27.9)
 project(jotter)
 set(CMAKE_CXX_STANDARD 23)
-
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(ALL_SOURCES
         "${PROJECT_SOURCE_DIR}/src/note.cpp"
         "${PROJECT_SOURCE_DIR}/src/common.cpp"
