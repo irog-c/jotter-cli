@@ -19,10 +19,9 @@ namespace jotter
             void write_to_file(auto&) const;
         };
 
+       private:
         Config& cfg_;
         Params& params_;
-
-        static void write_entry_to_file(const Entry& entry, auto& file);
 
        public:
         Note() = delete;
