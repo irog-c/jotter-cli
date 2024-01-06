@@ -10,7 +10,7 @@
 
 namespace jotter
 {
-    Note::Entry Note::create_entry(std::string_view note)
+    Note::Entry Note::Entry::create(std::string_view note)
     {
         return {
             .note_text  = note,
@@ -18,7 +18,7 @@ namespace jotter
         };
     }
 
-    void Note::write_entry_to_file(const Note::Entry& entry, auto& file)
+    void Note::Entry::write_to_file(auto& file) const
     {
         nlohmann::json json_data;
         file >> json_data;
@@ -26,8 +26,8 @@ namespace jotter
         if(not json_data.contains("entries")) json_data["entries"] = nlohmann::json::array();
 
         auto entry_object          = nlohmann::json::object();
-        entry_object["note_text"]  = entry.note_text;
-        entry_object["epoch_time"] = entry.epoch_time;
+        entry_object["note_text"]  = this->note_text;
+        entry_object["epoch_time"] = this->epoch_time;
         json_data["entries"].push_back(entry_object);
 
         file.seekp(0);
@@ -46,8 +46,7 @@ namespace jotter
         auto file = std::fstream(notes_path, std::fstream::in | std::fstream::out);
         if(not file.is_open()) throw std::runtime_error(fmt::format("Could not open file {} for writing.", notes_path));
 
-        auto entry = create_entry(note);
-        write_entry_to_file(entry, file);
+        Note::Entry::create(note).write_to_file(file);
     }
 
     void Note::get() const

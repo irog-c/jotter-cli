@@ -15,12 +15,13 @@ namespace jotter
         {
             std::string_view note_text;
             epoch_time_t epoch_time;
+            static Entry create(std::string_view);
+            void write_to_file(auto&) const;
         };
 
         Config& cfg_;
         Params& params_;
 
-        static Entry create_entry(std::string_view);
         static void write_entry_to_file(const Entry& entry, auto& file);
 
        public:
