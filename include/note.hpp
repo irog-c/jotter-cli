@@ -1,5 +1,6 @@
 #pragma once
 
+#include <params.hpp>
 #include <config.hpp>
 #include <common.hpp>
 
@@ -10,22 +11,23 @@ namespace jotter
     class Note
     {
        private:
-        struct note_entry
+        struct Entry
         {
             std::string_view note_text;
             epoch_time_t epoch_time;
+            Entry(std::string_view note);
+            void write_to_file(auto&) const;
         };
 
-        const config& cfg_;
-
-        note_entry create_entry(std::string_view);
-        void write_entry_to_file(const note_entry& entry, auto& file);
+       private:
+        const Config& cfg_;
+        const Params& params_;
 
        public:
         Note() = delete;
-        Note(config&);
+        Note(const Config&, const Params&);
 
-        void get();
-        void record(std::string_view);
+        void get() const;
+        void record(std::string_view) const;
     };
 }  // namespace jotter
