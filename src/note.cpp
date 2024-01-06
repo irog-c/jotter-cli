@@ -10,12 +10,8 @@
 
 namespace jotter
 {
-    [[nodiscard]] Note::Entry Note::Entry::create(std::string_view note)
+    Note::Entry::Entry(std::string_view note) : note_text(note), epoch_time(get_epoch_time())
     {
-        return {
-            .note_text  = note,
-            .epoch_time = get_epoch_time(),
-        };
     }
 
     void Note::Entry::write_to_file(auto& file) const
@@ -46,7 +42,7 @@ namespace jotter
         auto file = std::fstream(notes_path, std::fstream::in | std::fstream::out);
         if(not file.is_open()) throw std::runtime_error(fmt::format("Could not open file {} for writing.", notes_path));
 
-        Note::Entry::create(note).write_to_file(file);
+        Note::Entry(note).write_to_file(file);
     }
 
     void Note::get() const
