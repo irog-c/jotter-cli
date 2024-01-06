@@ -10,7 +10,7 @@
 
 namespace jotter
 {
-    Note::Entry Note::Entry::create(std::string_view note)
+    [[nodiscard]] Note::Entry Note::Entry::create(std::string_view note)
     {
         return {
             .note_text  = note,
