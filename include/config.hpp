@@ -6,7 +6,6 @@
 
 namespace jotter
 {
-
     class Config
     {
        private:
