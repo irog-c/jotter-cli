@@ -38,7 +38,7 @@ namespace jotter
     {
     }
 
-    void Note::record(std::string_view note)
+    void Note::record(std::string_view note) const
     {
         auto notes_path = cfg_.get_notes_location();
         create_file_if_nonexistent(notes_path, "{}\n");
@@ -50,7 +50,7 @@ namespace jotter
         write_entry_to_file(entry, file);
     }
 
-    void Note::get()
+    void Note::get() const
     {
         auto notes_path = cfg_.get_notes_location();
         auto file       = std::fstream(notes_path, std::fstream::in);

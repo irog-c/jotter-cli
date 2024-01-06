@@ -27,7 +27,7 @@ namespace jotter
         Note() = delete;
         Note(Config&, Params&);
 
-        void get();
-        void record(std::string_view);
+        void get() const;
+        void record(std::string_view) const;
     };
 }  // namespace jotter

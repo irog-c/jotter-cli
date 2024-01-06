@@ -24,13 +24,13 @@ namespace jotter
        public:
         Config();
 
-        [[nodiscard]] inline std::string get_language()
+        [[nodiscard]] inline std::string get_language() const
         {
             return (config_json_.contains("language") and config_json_["language"].is_string()
                         ? std::string(config_json_["language"])
                         : default_config_.language);
         }
-        [[nodiscard]] inline std::string get_notes_location()
+        [[nodiscard]] inline std::string get_notes_location() const
         {
             return (config_json_.contains("notesLocation") and config_json_["notesLocation"].is_string()
                         ? std::string(config_json_["notesLocation"])

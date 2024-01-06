@@ -24,27 +24,27 @@ namespace jotter
             return empty_params_;
         }
 
-        inline void print_help()
+        inline void print_help() const
         {
             fmt::println("{}", options_.help());
         }
 
-        [[nodiscard]] inline bool get_help()
+        [[nodiscard]] inline bool get_help() const
         {
             return parsed_options_.count("help") >= 1u;
         }
 
-        [[nodiscard]] inline bool get_get()
+        [[nodiscard]] inline bool get_get() const
         {
             return parsed_options_.count("get") >= 1u;
         }
 
-        [[nodiscard]] inline bool get_timestamp()
+        [[nodiscard]] inline bool get_timestamp() const
         {
             return parsed_options_.count("timestamp") >= 1u;
         }
 
-        [[nodiscard]] inline std::string get_note()
+        [[nodiscard]] inline std::string get_note() const
         {
             return parsed_options_["note"].as<std::string>();
         }
