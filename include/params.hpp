@@ -19,7 +19,7 @@ namespace jotter
 
         Params(const int argc, const char* argv[], std::string_view language);
 
-        [[nodiscard]] inline bool empty() noexcept
+        [[nodiscard]] constexpr bool empty() noexcept
         {
             return empty_params_;
         }
