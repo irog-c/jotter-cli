@@ -9,7 +9,7 @@ namespace jotter
 {
     std::string get_home_location()
     {
-        static auto home_location = std::filesystem::path(getenv("HOME")).string() + "/";
+        static auto home_location = std::filesystem::path(std::getenv("HOME")).string() + "/";
         return home_location;
     }
 
@@ -25,7 +25,7 @@ namespace jotter
         if(not std::filesystem::exists(file_path))
         {
             std::filesystem::create_directories(std::filesystem::path(file_path).parent_path());
-            std::ofstream file(file_path);
+            std::ofstream file(std::filesystem::path{ file_path });
             if(not file.is_open()) throw std::runtime_error(fmt::format("Could not create file {}", file_path));
 
             file << file_contents;
