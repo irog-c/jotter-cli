@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.27.9)
 project(jotter)
 set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -Wall -Wextra")
-
 set(ALL_SOURCES
     "${PROJECT_SOURCE_DIR}/src/params.cpp"
     "${PROJECT_SOURCE_DIR}/src/note.cpp"
