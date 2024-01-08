@@ -6,19 +6,14 @@
 #include <fmt/chrono.h>
 
 #include <fstream>
-#include <iostream>
 
 namespace jotter
 {
-    Note::note_entry Note::create_entry(std::string_view note)
+    Note::Entry::Entry(std::string_view note) : note_text(note), epoch_time(get_epoch_time())
     {
-        return {
-            .note_text  = note,
-            .epoch_time = get_epoch_time(),
-        };
     }
 
-    void Note::write_entry_to_file(const Note::note_entry& entry, auto& file)
+    void Note::Entry::write_to_file(auto& file) const
     {
         nlohmann::json json_data;
         file >> json_data;
@@ -26,34 +21,33 @@ namespace jotter
         if(not json_data.contains("entries")) json_data["entries"] = nlohmann::json::array();
 
         auto entry_object          = nlohmann::json::object();
-        entry_object["note_text"]  = entry.note_text;
-        entry_object["epoch_time"] = entry.epoch_time;
+        entry_object["note_text"]  = this->note_text;
+        entry_object["epoch_time"] = this->epoch_time;
         json_data["entries"].push_back(entry_object);
 
         file.seekp(0);
         file << json_data.dump() << '\n';
     }
 
-    Note::Note(config& cfg) : cfg_(cfg)
+    Note::Note(const Config& cfg, const Params& params) : cfg_(cfg), params_(params)
     {
     }
 
-    void Note::record(std::string_view note)
+    void Note::record(std::string_view note) const
     {
-        const auto& notes_path = cfg_.notes_location;
+        auto notes_path = cfg_.get_notes_location();
         create_file_if_nonexistent(notes_path, "{}\n");
 
         auto file = std::fstream(notes_path, std::fstream::in | std::fstream::out);
         if(not file.is_open()) throw std::runtime_error(fmt::format("Could not open file {} for writing.", notes_path));
 
-        auto entry = create_entry(note);
-        write_entry_to_file(entry, file);
+        Note::Entry(note).write_to_file(file);
     }
 
-    void Note::get()
+    void Note::get() const
     {
-        const auto& notes_path = cfg_.notes_location;
-        auto file              = std::fstream(notes_path, std::fstream::in);
+        auto notes_path = cfg_.get_notes_location();
+        auto file       = std::fstream(notes_path, std::fstream::in);
         if(not file.is_open())
         {
             fmt::println("No notes recorded.");
@@ -67,7 +61,7 @@ namespace jotter
 
         for(const auto& entry: json_data["entries"])
         {
-            if(cfg_.with_timestamp)
+            if(params_.get_timestamp())
             {
                 fmt::println(
                     "[{}] {}",
