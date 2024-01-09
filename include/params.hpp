@@ -17,7 +17,7 @@ namespace jotter
        public:
         Params() = delete;
 
-        Params(const int argc, const char* argv[], std::string_view language);
+        Params(int argc, const char* argv[], std::string_view language);
 
         [[nodiscard]] constexpr bool empty() const noexcept
         {

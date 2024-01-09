@@ -3,7 +3,7 @@
 namespace jotter
 {
 
-    Params::Params(const int argc, const char* argv[], std::string_view language)
+    Params::Params(int argc, const char* argv[], std::string_view language)
         : options_(cxxopts::Options("jotter", "Command line utility for managing notes"))
     {
         if(language == "ru")
