@@ -10,7 +10,7 @@ namespace jotter
     class Params
     {
        private:
-        static cxxopts::Options options_;
+        cxxopts::Options options_;
         cxxopts::ParseResult parsed_options_;
         bool empty_params_;
 
@@ -19,7 +19,7 @@ namespace jotter
 
         Params(const int argc, const char* argv[], std::string_view language);
 
-        [[nodiscard]] constexpr bool empty() noexcept
+        [[nodiscard]] constexpr bool empty() const noexcept
         {
             return empty_params_;
         }
