@@ -25,7 +25,7 @@ target_link_libraries(${PROJECT_NAME} ${LIBS})
 
 if (NOT BUILD_TESTING STREQUAL OFF)
     list(REMOVE_ITEM ALL_SOURCES "${PROJECT_SOURCE_DIR}/src/main.cpp")
-    add_subdirectory(tests)
+    add_subdirectory(test)
 endif ()
 
 install(TARGETS ${PROJECT_NAME})

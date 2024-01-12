@@ -21,9 +21,9 @@ class Jotter(ConanFile):
         cmake.configure()
         cmake.build()
         if not self.conf.get("tools.build:skip_test", default=False):
-            test_folder = os.path.join("tests")
+            test_folder = os.path.join("test")
             if self.settings.os == "Windows":
-                test_folder = os.path.join("tests", str(self.settings.build_type))
+                test_folder = os.path.join("test", str(self.settings.build_type))
             self.run(os.path.join(test_folder, "test_hello"))
 
     def package(self):

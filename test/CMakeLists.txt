@@ -14,4 +14,4 @@ target_link_libraries(${PROJECT_NAME}
         GTest::gtest_main
         GTest::gmock
 )
-target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/../include mocks)
+target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/../include mock)
