@@ -23,7 +23,9 @@ namespace Jotter
         {
         }
         void createFileIfNonexistent(std::string_view filePath, std::string_view fileContents) const override;
-        [[nodiscard]] epoch_time_t getEpochTime() const override;
+
+        [[nodiscard]] epoch getEpochTime() const override;
+
         [[nodiscard]] std::string getHomeLocation() const override;
     };
 }  // namespace Jotter

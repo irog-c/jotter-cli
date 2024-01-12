@@ -6,7 +6,7 @@
 
 namespace Jotter
 {
-    [[nodiscard]] epoch_time_t Common::getEpochTime() const
+    [[nodiscard]] epoch Common::getEpochTime() const
     {
         return std::chrono::duration_cast<std::chrono::milliseconds>(
                    std::chrono::system_clock::now().time_since_epoch())

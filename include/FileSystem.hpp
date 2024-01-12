@@ -11,5 +11,4 @@ namespace Jotter
             return std::filesystem::path(path);
         }
     };
-    ;
 }  // namespace Jotter

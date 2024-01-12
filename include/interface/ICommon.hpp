@@ -8,7 +8,7 @@
 
 namespace Jotter
 {
-    using epoch_time_t = unsigned long long;
+    using epoch = unsigned long long;
 
     class ICommon
     {
@@ -17,7 +17,7 @@ namespace Jotter
 
         [[nodiscard]] virtual std::string getHomeLocation() const = 0;
 
-        [[nodiscard]] virtual epoch_time_t getEpochTime() const = 0;
+        [[nodiscard]] virtual epoch getEpochTime() const = 0;
 
         virtual void createFileIfNonexistent(std::string_view file_path, std::string_view file_contents) const = 0;
     };
