@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.27.9)
 project(jotter_test CXX)
 
-enable_testing()
 include(GoogleTest)
+enable_testing()
 
 find_package(GTest REQUIRED CONFIG)
 
