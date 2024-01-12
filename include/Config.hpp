@@ -36,4 +36,4 @@ namespace Jotter
                         : configFields_.notesLocation);
         }
     };
-}  // namespace jotter
+}  // namespace Jotter

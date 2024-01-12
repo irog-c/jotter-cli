@@ -16,7 +16,8 @@ namespace Jotter
     [[nodiscard]] std::string Common::getHomeLocation() const
     {
         auto homeDir = environment.getEnv("HOME");
-        if (!homeDir.has_value()) {
+        if(!homeDir.has_value())
+        {
             throw std::runtime_error("HOME not set!");
         }
 

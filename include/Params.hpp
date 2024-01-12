@@ -49,4 +49,4 @@ namespace Jotter
             return parsedOptions_["note"].as<std::string>();
         }
     };
-}  // namespace jotter
+}  // namespace Jotter

@@ -27,7 +27,7 @@ namespace Jotter
             // clang-format on
         }
 
-        parsedOptions_  = options_.parse(argc, argv);
-        emptyParams_    = argc == 1;
+        parsedOptions_ = options_.parse(argc, argv);
+        emptyParams_   = argc == 1;
     }
-}  // namespace jotter
+}  // namespace Jotter

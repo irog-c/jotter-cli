@@ -13,8 +13,8 @@ namespace Jotter
         static constexpr auto notesLocation   = ".config/jotter/notes.json";
         static constexpr auto defaultLanguage = "en";
         auto configPath                       = common.getHomeLocation() + configLocation;
-        configFields_.notesLocation         = common.getHomeLocation() + notesLocation;
-        configFields_.language              = defaultLanguage;
+        configFields_.notesLocation           = common.getHomeLocation() + notesLocation;
+        configFields_.language                = defaultLanguage;
         common.createFileIfNonexistent(configPath, "{}\n");
 
         auto file = std::ifstream(configPath);

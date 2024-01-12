@@ -15,7 +15,7 @@ namespace Jotter
         {
             std::string_view note_text;
             epoch_time_t epoch_time;
-            explicit Entry(std::string_view note, ICommon &common);
+            explicit Entry(std::string_view note, ICommon& common);
             void write_to_file(auto&) const;
         };
 
@@ -30,4 +30,4 @@ namespace Jotter
         void get() const;
         void record(std::string_view) const;
     };
-}  // namespace jotter
+}  // namespace Jotter
