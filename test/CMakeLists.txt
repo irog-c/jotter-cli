@@ -1,10 +1,9 @@
 cmake_minimum_required(VERSION 3.27.9)
 project(jotter_test CXX)
 
+find_package(GTest REQUIRED CONFIG)
 include(GoogleTest)
 enable_testing()
-
-find_package(GTest REQUIRED CONFIG)
 
 file(GLOB TEST_SOURCES ${PROJECT_SOURCE_DIR}/src/*.cpp ${PROJECT_SOURCE_DIR}/mocks/*.hpp)
 
