@@ -1,12 +1,12 @@
 #pragma once
 
-#include <params.hpp>
-#include <config.hpp>
-#include <common.hpp>
+#include <Params.hpp>
+#include <Config.hpp>
+#include "interface/ICommon.hpp"
 
 #include <string_view>
 
-namespace jotter
+namespace Jotter
 {
     class Note
     {
@@ -15,7 +15,7 @@ namespace jotter
         {
             std::string_view note_text;
             epoch_time_t epoch_time;
-            explicit Entry(std::string_view note);
+            explicit Entry(std::string_view note, ICommon &common);
             void write_to_file(auto&) const;
         };
 

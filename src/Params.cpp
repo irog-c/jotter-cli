@@ -1,6 +1,6 @@
-#include <params.hpp>
+#include <Params.hpp>
 
-namespace jotter
+namespace Jotter
 {
 
     Params::Params(int argc, const char* argv[], std::string_view language)
@@ -27,7 +27,7 @@ namespace jotter
             // clang-format on
         }
 
-        parsed_options_ = options_.parse(argc, argv);
-        empty_params_   = argc == 1;
+        parsedOptions_  = options_.parse(argc, argv);
+        emptyParams_    = argc == 1;
     }
 }  // namespace jotter

@@ -34,5 +34,7 @@ requirements:
   - "nlohmann_json/[~3.11]"
   - "fmt/[~10.1]"
   - "cxxopts/[~3.1]"
-  - "gtest/[~1.14]"
   - "icu/[~74]"
+
+test_requirements:
+  - "gtest/[~1.14]"

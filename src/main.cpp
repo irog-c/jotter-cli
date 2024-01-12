@@ -1,32 +1,37 @@
-#include <params.hpp>
-#include <note.hpp>
+#include <Params.hpp>
+#include <Note.hpp>
 
-#include <fmt/core.h>
 #include <fmt/color.h>
 
 #include <string>
 #include <exception>
+#include "FileSystem.hpp"
+#include "Environment.hpp"
+#include "Common.hpp"
 
 int main(const int argc, const char* argv[])
 try
 {
-    auto cfg    = jotter::Config();
-    auto params = jotter::Params(argc, argv, cfg.get_language());
-    if(params.get_help() or params.empty())
+    auto fileSystem  = Jotter::FileSystem();
+    auto environment = Jotter::Environment();
+    auto common      = Jotter::Common(fileSystem, environment);
+    auto cfg         = Jotter::Config(common);
+    auto params      = Jotter::Params(argc, argv, cfg.getLanguage());
+    if(params.isHelpRequested() or params.empty())
     {
-        params.print_help();
+        params.printHelp();
         return EXIT_SUCCESS;
     }
 
-    auto note = jotter::Note(cfg, params);
+    auto note = Jotter::Note(cfg, params);
 
-    if(params.get_get())
+    if(params.isGetRequested())
     {
         note.get();
         return EXIT_SUCCESS;
     }
 
-    note.record(params.get_note());
+    note.record(params.getNote());
 
     return EXIT_SUCCESS;
 }
