@@ -14,13 +14,7 @@ find_package(fmt)
 find_package(nlohmann_json)
 find_package(ICU)
 
-set(LIBS
-        fmt::fmt
-        nlohmann_json::nlohmann_json
-        cxxopts::cxxopts
-        ICU::uc
-)
-
+set(LIBS fmt::fmt nlohmann_json::nlohmann_json cxxopts::cxxopts ICU::uc)
 target_link_libraries(${PROJECT_NAME} ${LIBS})
 
 if (NOT BUILD_TESTING STREQUAL OFF)
