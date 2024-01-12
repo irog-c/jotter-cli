@@ -7,7 +7,7 @@
 
 namespace Jotter
 {
-    Config::Config(ICommon& common) : common(common)
+    Config::Config(ICommon&& common) : common(common)
     {
         static constexpr auto configLocation  = ".config/jotter/jotter-config.json";
         static constexpr auto notesLocation   = ".config/jotter/notes.json";

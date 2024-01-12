@@ -12,7 +12,13 @@ namespace Jotter
 
        public:
         Common() = delete;
+
         Common(IFileSystem& iFileSystem, IEnvironment& iEnvironment)
+            : fileSystem(iFileSystem), environment(iEnvironment)
+        {
+        }
+
+        Common(IFileSystem&& iFileSystem, IEnvironment&& iEnvironment)
             : fileSystem(iFileSystem), environment(iEnvironment)
         {
         }

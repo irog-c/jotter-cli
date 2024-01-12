@@ -9,8 +9,8 @@ namespace Jotter
     class TestCommon : public ::testing::Test
     {
        protected:
-        Jotter::FileSystem fileSystem;
-        Jotter::MockEnvironment environment;
+        Jotter::FileSystem fileSystem{};
+        Jotter::MockEnvironment environment{};
         Jotter::Common common{fileSystem, environment};
     };
 

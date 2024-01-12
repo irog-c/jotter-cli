@@ -4,6 +4,9 @@
 
 #include <string>
 #include "interface/ICommon.hpp"
+#include "Common.hpp"
+#include "FileSystem.hpp"
+#include "Environment.hpp"
 
 namespace Jotter
 {
@@ -15,13 +18,17 @@ namespace Jotter
             std::string language;
             std::string notesLocation;
         };
+
         Fields configFields_;
+
         nlohmann::json jsonConfig_;
 
        public:
         ICommon& common;
 
-        explicit Config(ICommon& common);
+        Config() = delete;
+
+        explicit Config(ICommon&& common);
 
         [[nodiscard]] inline std::string getLanguage() const
         {

@@ -5,18 +5,15 @@
 
 #include <string>
 #include <exception>
-#include "FileSystem.hpp"
-#include "Environment.hpp"
-#include "Common.hpp"
 
 int main(const int argc, const char* argv[])
 try
 {
-    auto fileSystem  = Jotter::FileSystem();
-    auto environment = Jotter::Environment();
-    auto common      = Jotter::Common(fileSystem, environment);
-    auto cfg         = Jotter::Config(common);
-    auto params      = Jotter::Params(argc, argv, cfg.getLanguage());
+    auto cfg = Jotter::Config{
+        Jotter::Common{Jotter::FileSystem{}, Jotter::Environment{}}
+    };
+    auto params = Jotter::Params(argc, argv, cfg.getLanguage());
+
     if(params.isHelpRequested() or params.empty())
     {
         params.printHelp();
