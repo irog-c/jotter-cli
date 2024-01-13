@@ -7,10 +7,11 @@
 #include "Common.hpp"
 #include "FileSystem.hpp"
 #include "Environment.hpp"
+#include "Singleton.hpp"
 
 namespace Jotter
 {
-    class Config
+    class Config : public Singleton
     {
        private:
         struct Fields
@@ -27,14 +28,6 @@ namespace Jotter
 
        public:
         ICommon& common;
-
-        Config() = delete;
-
-        Config(const Config&) = delete;
-
-        Config& operator=(const Config&) = delete;
-
-        Config(Config&&) = delete;
 
         static Config& getInstance()
         {
