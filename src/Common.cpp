@@ -21,8 +21,7 @@ namespace Jotter
             throw std::runtime_error("HOME not set!");
         }
 
-        static auto homeLocation = fileSystem.resolvePath(homeDir.value()) + "/";
-        return homeLocation;
+        return fileSystem.resolvePath(homeDir.value()) + "/";
     }
 
     void Common::createFileIfNonexistent(std::string_view filePath, std::string_view fileContents) const
