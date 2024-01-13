@@ -9,9 +9,7 @@
 int main(const int argc, const char* argv[])
 try
 {
-    auto cfg = Jotter::Config{
-        Jotter::Common{Jotter::FileSystem{}, Jotter::Environment{}}
-    };
+    auto& cfg = Jotter::Config::getInstance();
     auto params = Jotter::Params(argc, argv, cfg.getLanguage());
 
     if(params.isHelpRequested() or params.empty())

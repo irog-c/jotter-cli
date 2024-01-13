@@ -23,12 +23,27 @@ namespace Jotter
 
         nlohmann::json jsonConfig_;
 
+        explicit Config(ICommon&& common);
+
        public:
         ICommon& common;
 
         Config() = delete;
 
-        explicit Config(ICommon&& common);
+        Config(const Config&) = delete;
+
+        Config& operator=(const Config&) = delete;
+
+        Config(Config&&) = delete;
+
+        static Config& getInstance()
+        {
+            static Config INSTANCE{
+                Common{FileSystem{}, Environment{}}
+            };
+
+            return INSTANCE;
+        }
 
         [[nodiscard]] inline std::string getLanguage() const
         {
