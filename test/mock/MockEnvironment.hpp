@@ -1,6 +1,7 @@
 #pragma once
 
 #include "interface/IEnvironment.hpp"
+
 #include <gmock/gmock.h>
 
 namespace Jotter

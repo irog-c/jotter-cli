@@ -1,5 +1,5 @@
-#include <Note.hpp>
-#include <Config.hpp>
+#include "Note.hpp"
+#include "Config.hpp"
 
 #include <nlohmann/json.hpp>
 #include <fmt/core.h>

@@ -1,5 +1,7 @@
 #include "Common.hpp"
+
 #include <fmt/core.h>
+
 #include <fstream>
 #include <filesystem>
 #include <string_view>
