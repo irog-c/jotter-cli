@@ -1,7 +1,3 @@
-//
-// Created by kyryl on 1/13/2024.
-//
-
 #pragma once
 
 #include "Config.hpp"

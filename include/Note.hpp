@@ -1,7 +1,7 @@
 #pragma once
 
-#include <Params.hpp>
-#include <Config.hpp>
+#include "Params.hpp"
+#include "Config.hpp"
 #include "interface/ICommon.hpp"
 
 #include <string_view>

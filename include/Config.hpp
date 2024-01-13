@@ -1,12 +1,13 @@
 #pragma once
 
-#include <nlohmann/json.hpp>
-
-#include <string>
 #include "interface/ICommon.hpp"
 #include "Common.hpp"
 #include "FileSystem.hpp"
 #include "Environment.hpp"
+
+#include <nlohmann/json.hpp>
+
+#include <string>
 
 namespace Jotter
 {
