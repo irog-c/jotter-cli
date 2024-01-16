@@ -10,7 +10,7 @@ namespace Jotter
         static inline Jotter::Config create()
         {
             return Jotter::Config{
-                Jotter::Common{Jotter::FileSystem{}, Jotter::Environment{}}
+                new Common{new FileSystem, new Environment}
             };
         };
     };

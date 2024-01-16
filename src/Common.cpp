@@ -17,13 +17,13 @@ namespace Jotter
 
     [[nodiscard]] std::string Common::getHomeLocation() const
     {
-        auto homeDir = environment.getEnv(HOME_VAR);
+        auto homeDir = environment->getEnv(HOME_VAR);
         if(!homeDir.has_value())
         {
             throw std::runtime_error("HOME not set!");
         }
 
-        return fileSystem.resolvePath(homeDir.value()) + "/";
+        return fileSystem->resolvePath(homeDir.value()) + "/";
     }
 
     void Common::createFileIfNonexistent(std::string_view filePath, std::string_view fileContents) const

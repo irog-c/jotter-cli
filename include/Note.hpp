@@ -17,7 +17,7 @@ namespace Jotter
 
             epoch creationTime;
 
-            explicit Entry(std::string_view note, ICommon& common);
+            explicit Entry(std::string_view note, epoch creationTime);
 
             void writeToFile(auto&) const;
         };

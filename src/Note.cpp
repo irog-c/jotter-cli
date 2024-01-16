@@ -1,5 +1,4 @@
 #include "Note.hpp"
-#include "Config.hpp"
 
 #include <nlohmann/json.hpp>
 #include <fmt/core.h>
@@ -9,7 +8,7 @@
 
 namespace Jotter
 {
-    Note::Entry::Entry(std::string_view note, ICommon& common) : entryText(note), creationTime(common.getEpochTime())
+    Note::Entry::Entry(std::string_view note, epoch creationTime) : entryText(note), creationTime(creationTime)
     {
     }
 
@@ -36,18 +35,19 @@ namespace Jotter
     void Note::record(std::string_view note) const
     {
         auto notesLocation = cfg_.getNotesLocation();
-        cfg_.common.createFileIfNonexistent(notesLocation, "{}\n");
+        cfg_.common->createFileIfNonexistent(notesLocation, "{}\n");
 
         auto file = std::fstream(notesLocation, std::fstream::in | std::fstream::out);
-        if(not file.is_open()) throw std::runtime_error(fmt::format("Could not open file {} for writing.", notesLocation));
+        if(not file.is_open())
+            throw std::runtime_error(fmt::format("Could not open file {} for writing.", notesLocation));
 
-        Note::Entry(note, cfg_.common).writeToFile(file);
+        Note::Entry(note, cfg_.common->getEpochTime()).writeToFile(file);
     }
 
     void Note::get() const
     {
         auto notesLocation = cfg_.getNotesLocation();
-        auto file       = std::fstream(notesLocation, std::fstream::in);
+        auto file          = std::fstream(notesLocation, std::fstream::in);
         if(not file.is_open())
         {
             fmt::println("No notes recorded.");
