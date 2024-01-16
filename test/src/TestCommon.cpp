@@ -16,13 +16,13 @@ namespace Jotter
 
     TEST_F(TestCommon, GetHomeLocationFailure)
     {
-        EXPECT_CALL(environment, getEnv("HOME")).WillOnce(testing::Return(std::nullopt));
+        EXPECT_CALL(environment, getEnv(HOME_VAR)).WillOnce(testing::Return(std::nullopt));
         EXPECT_THROW((void)common.getHomeLocation(), std::runtime_error);
     }
 
     TEST_F(TestCommon, GetHomeLocationFailureMessage)
     {
-        EXPECT_CALL(environment, getEnv("HOME")).WillOnce(testing::Return(std::nullopt));
+        EXPECT_CALL(environment, getEnv(HOME_VAR)).WillOnce(testing::Return(std::nullopt));
 
         try
         {
@@ -37,9 +37,8 @@ namespace Jotter
     TEST_F(TestCommon, GetHomeLocationSuccess)
     {
         std::optional<std::string> homePath = "/home/user";
-        std::string envVar                  = "HOME";
 
-        EXPECT_CALL(environment, getEnv(envVar)).WillOnce(testing::Return(homePath));
+        EXPECT_CALL(environment, getEnv(HOME_VAR)).WillOnce(testing::Return(homePath));
 
         std::string result = common.getHomeLocation();
 

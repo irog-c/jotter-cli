@@ -8,7 +8,7 @@ namespace Jotter
     {
         std::string resolvePath(const std::string_view &path) override
         {
-            return std::filesystem::path(path);
+            return std::filesystem::path(path).string();
         }
     };
 }  // namespace Jotter

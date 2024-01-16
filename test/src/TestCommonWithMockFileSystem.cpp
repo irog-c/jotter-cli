@@ -16,7 +16,7 @@ namespace Jotter
     TEST_F(TestCommonWithMockFileSystem, ThrowsExceptionWhenResolvePathCalled)
     {
         std::optional<std::string> homePath = "/home/user";
-        EXPECT_CALL(environment, getEnv("HOME")).WillOnce(testing::Return(homePath));
+        EXPECT_CALL(environment, getEnv(HOME_VAR)).WillOnce(testing::Return(homePath));
         EXPECT_CALL(mockFileSystem, resolvePath(homePath.value()))
             .WillOnce(testing::Throw(std::filesystem::filesystem_error("filesystem error", std::error_code())));
         EXPECT_THROW((void)common.getHomeLocation(), std::filesystem::filesystem_error);

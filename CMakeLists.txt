@@ -5,8 +5,10 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 if (MSVC)
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /O /W4 /Wall")
+    add_compile_definitions(HOME_VAR="USERPROFILE")
 else ()
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -Wall -Wextra")
+    add_compile_definitions(HOME_VAR="HOME")
 endif ()
 
 file(GLOB ALL_SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp")
