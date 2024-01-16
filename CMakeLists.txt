@@ -2,7 +2,12 @@ cmake_minimum_required(VERSION 3.27.9)
 project(jotter)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -Wall -Wextra")
+
+if (MSVC)
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /O /W4 /Wall")
+else ()
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -Wall -Wextra")
+endif ()
 
 file(GLOB ALL_SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp")
 
