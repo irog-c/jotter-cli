@@ -1,5 +1,7 @@
 #pragma once
 
+#include <utility>
+
 #include "interface/ICommon.hpp"
 
 namespace Jotter
@@ -7,14 +9,14 @@ namespace Jotter
     class Common : public ICommon
     {
        protected:
-        std::unique_ptr<IFileSystem> fileSystem;
-        std::unique_ptr<IEnvironment> environment;
+        std::shared_ptr<IFileSystem> fileSystem;
+        std::shared_ptr<IEnvironment> environment;
 
        public:
         Common() = delete;
 
-        Common(IFileSystem* iFileSystem, IEnvironment* iEnvironment)
-            : fileSystem(iFileSystem), environment(iEnvironment)
+        Common(std::shared_ptr<IFileSystem> iFileSystem, std::shared_ptr<IEnvironment> iEnvironment)
+            : fileSystem(std::move(iFileSystem)), environment(std::move(iEnvironment))
         {
         }
 

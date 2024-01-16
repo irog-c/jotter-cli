@@ -10,7 +10,7 @@ namespace Jotter
         static inline Jotter::Config create()
         {
             return Jotter::Config{
-                new Common{new FileSystem, new Environment}
+                new Common{std::make_shared<FileSystem>(), std::make_shared<Environment>()}
             };
         };
     };
