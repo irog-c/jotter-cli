@@ -4,7 +4,6 @@
 
 #include <fmt/color.h>
 
-#include <string>
 #include <exception>
 
 int main(const int argc, const char* argv[])
