@@ -9,9 +9,10 @@ namespace Jotter
        public:
         static inline Jotter::Config create()
         {
-            return Jotter::Config{
-                new Common{std::make_shared<FileSystem>(), std::make_shared<Environment>()}
-            };
+            auto fileSystem  = std::make_shared<FileSystem>();
+            auto environment = std::make_shared<Environment>();
+            auto common      = std::make_shared<Common>(fileSystem, environment);
+            return Jotter::Config{common};
         };
     };
 }  // namespace Jotter

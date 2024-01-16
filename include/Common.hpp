@@ -15,8 +15,8 @@ namespace Jotter
        public:
         Common() = delete;
 
-        Common(std::shared_ptr<IFileSystem> iFileSystem, std::shared_ptr<IEnvironment> iEnvironment)
-            : fileSystem(std::move(iFileSystem)), environment(std::move(iEnvironment))
+        Common(std::shared_ptr<IFileSystem>&& iFileSystem, std::shared_ptr<IEnvironment>&& iEnvironment)
+            : fileSystem(iFileSystem), environment(iEnvironment)
         {
         }
 

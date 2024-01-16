@@ -25,11 +25,11 @@ namespace Jotter
         nlohmann::json jsonConfig_;
 
        public:
-        std::unique_ptr<ICommon> common;
+        std::shared_ptr<ICommon> common;
 
         Config() = delete;
 
-        explicit Config(ICommon* common);
+        explicit Config(std::shared_ptr<ICommon>&& common);
 
         [[nodiscard]] inline std::string getLanguage() const
         {
