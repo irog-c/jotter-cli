@@ -9,6 +9,6 @@ namespace Jotter
     class MockFileSystem : public IFileSystem
     {
        public:
-        MOCK_METHOD(std::string, resolvePath, (const std::string_view& path), (override));
+        MOCK_METHOD(std::string, resolvePath, (const std::string& path), (override));
     };
 }  // namespace Jotter

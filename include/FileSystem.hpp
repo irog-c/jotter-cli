@@ -6,7 +6,7 @@ namespace Jotter
 {
     class FileSystem : public IFileSystem
     {
-        std::string resolvePath(const std::string_view &path) override
+        std::string resolvePath(const std::string& path) override
         {
             return std::filesystem::path(path).string();
         }

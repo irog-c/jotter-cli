@@ -9,6 +9,6 @@ namespace Jotter
        public:
         virtual ~IFileSystem()                                        = default;
 
-        virtual std::string resolvePath(const std::string_view& path) = 0;
+        virtual std::string resolvePath(const std::string& path) = 0;
     };
 }  // namespace Jotter
