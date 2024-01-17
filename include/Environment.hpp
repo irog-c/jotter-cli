@@ -31,7 +31,7 @@ namespace Jotter
             {
                 return std::string(envVal);
             }
-            
+
             return std::nullopt;
         }
 #endif

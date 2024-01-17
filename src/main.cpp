@@ -9,7 +9,7 @@
 int main(const int argc, const char* argv[])
 try
 {
-    auto cfg = Jotter::ConfigFactory::create();
+    auto cfg    = Jotter::ConfigFactory::create();
     auto params = Jotter::Params(argc, argv, cfg.getLanguage());
 
     if(params.isHelpRequested() or params.empty())
