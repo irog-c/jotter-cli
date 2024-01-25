@@ -11,6 +11,10 @@ class Jotter(ConanFile):
 
     def requirements(self):
         [self.requires(requirement) for requirement in self.conan_data["requirements"]]
+        [self.test_requires(test_requirement) for test_requirement in self.conan_data["test_requirements"]]
+
+    def build_requirements(self):
+        [self.build_requires(build_requirement) for build_requirement in self.conan_data["build_requirements"]]
 
     def layout(self):
         cmake_layout(self)
@@ -19,6 +23,11 @@ class Jotter(ConanFile):
         cmake = CMake(self)
         cmake.configure()
         cmake.build()
+        if not self.conf.get("tools.build:skip_test", default=False):
+            test_folder = os.path.join("test")
+            if self.settings.os == "Windows":
+                test_folder = os.path.join("test", str(self.settings.build_type))
+            self.run(os.path.join(test_folder, "jotter_test"))
 
     def package(self):
         cmake = CMake(self)

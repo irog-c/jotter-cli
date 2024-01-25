@@ -2,7 +2,14 @@ cmake_minimum_required(VERSION 3.27.9)
 project(jotter)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -Wall -Wextra")
+
+if (MSVC)
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /Ox /W4")
+    add_compile_definitions(HOME_VAR="USERPROFILE")
+else ()
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -Wall -Wextra")
+    add_compile_definitions(HOME_VAR="HOME")
+endif ()
 
 file(GLOB ALL_SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp")
 
@@ -14,12 +21,12 @@ find_package(fmt)
 find_package(nlohmann_json)
 find_package(ICU)
 
-target_link_libraries(
-    ${PROJECT_NAME}
-    fmt::fmt
-    nlohmann_json::nlohmann_json
-    cxxopts::cxxopts
-    ICU::uc
-)
+set(LIBS fmt::fmt nlohmann_json::nlohmann_json cxxopts::cxxopts ICU::uc)
+target_link_libraries(${PROJECT_NAME} ${LIBS})
+
+if (NOT BUILD_TESTING STREQUAL OFF)
+    list(REMOVE_ITEM ALL_SOURCES "${PROJECT_SOURCE_DIR}/src/main.cpp")
+    add_subdirectory(test)
+endif ()
 
 install(TARGETS ${PROJECT_NAME})

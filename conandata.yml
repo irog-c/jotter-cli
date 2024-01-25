@@ -29,10 +29,16 @@ metadata:
     - CMakeLists.txt
     - src/*
     - include/*
+    - test/*
 
 requirements:
   - "nlohmann_json/[~3.11]"
   - "fmt/[~10.1]"
   - "cxxopts/[~3.1]"
-  - "gtest/[~1.14]"
   - "icu/[~74]"
+
+build_requirements:
+  - "cmake/[~3.27]"
+
+test_requirements:
+  - "gtest/[~1.14]"
